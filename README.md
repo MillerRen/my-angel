@@ -1,2 +1,5 @@
 # my-angel
-mongodb yeoman angular nodejs grunt express lodash
+
+-----------------------------------------
+
+mongodb yeoman angular nodejs grunt express less
