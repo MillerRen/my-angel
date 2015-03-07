@@ -241,6 +241,7 @@ module.exports = function (grunt) {
       test: {
         src: 'karma.conf.js',
         devDependencies:true,
+        exclude: [/angular-scenario/],
         fileTypes: {
           js: {
             block: /(([\s\t]*)\/\/\s*bower:*(\S*))(\n|\r|.)*?(\/\/\s*endbower)/gi,
