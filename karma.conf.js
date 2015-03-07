@@ -25,7 +25,6 @@ module.exports = function(config) {
       'bower_components/angular-socket-io/socket.js',
       'bower_components/angular-ui-router/release/angular-ui-router.js',
       'bower_components/angular-mocks/angular-mocks.js',
-      'bower_components/angular-scenario/angular-scenario.js',
       // endbower
       //'client/app/app.js',
       'client/app/app.coffee',
@@ -61,7 +60,7 @@ module.exports = function(config) {
 
     // level of logging
     // possible values: LOG_DISABLE || LOG_ERROR || LOG_WARN || LOG_INFO || LOG_DEBUG
-    logLevel: config.LOG_DEBUG,
+    logLevel: config.LOG_INFO,
 
 
     // enable / disable watching file and executing tests whenever any file changes
