@@ -2,7 +2,7 @@
 
 -----------------------------------------
 
-*Full-stack* js development environment with *M*ongodb *Y*eoman *A*ngular *N*odejs *G*runt *E*xpress *L*ess
+*Full-stack* js development environment with **M**ongodb **Y**eoman **A**ngular **N**odejs **G**runt **E**xpress **L**ess
 
 # Usage
 
