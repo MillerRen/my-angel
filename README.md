@@ -6,9 +6,9 @@
 
 # Usage
 
-1.clone this repository
-2.install requirement with bower and npm `bower install` and `npm install`
-3.start the development server `grunt serve`
-4.test `grunt test` or `grunt test:e2e`
+ 1. clone this repository
+ 2. install requirement with bower and npm `bower install` and `npm install`
+ 3. start the development server `grunt serve`
+ 4. test `grunt test` or `grunt test:e2e`
 
 
