@@ -5,7 +5,10 @@ angular.module('myAngelApp', [
   'ngResource',
   'ngSanitize',
   'ngRoute',
-  'btford.socket-io'
+  'route-segment',
+  'view-segment',
+  'btford.socket-io',
+  'angularLoad'
 ])
   .config(function ($routeProvider, $locationProvider, $httpProvider) {
     $routeProvider
