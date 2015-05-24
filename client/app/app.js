@@ -11,13 +11,7 @@ angular.module('myAngelApp', [
   'angularLoad'
 ])
   .config(function ($routeSegmentProvider, $locationProvider, $httpProvider) {
-    $routeSegmentProvider
-      .when('/','home')
-      .segment('home',{
-        templateUrl: 'app/main/main.html',
-        controller: 'MainCtrl'
-      });
-
+    $routeSegmentProvider.options.autoLoadTemplates = true;
     //$locationProvider.html5Mode(true);
     $httpProvider.interceptors.push('authInterceptor');
   })
