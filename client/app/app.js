@@ -10,13 +10,15 @@ angular.module('myAngelApp', [
   'btford.socket-io',
   'angularLoad'
 ])
-  .config(function ($routeProvider, $locationProvider, $httpProvider) {
-    $routeProvider
-      .otherwise({
-        redirectTo: '/'
+  .config(function ($routeSegmentProvider, $locationProvider, $httpProvider) {
+    $routeSegmentProvider
+      .when('/','home')
+      .segment('home',{
+        templateUrl: 'app/main/main.html',
+        controller: 'MainCtrl'
       });
 
-    $locationProvider.html5Mode(true);
+    //$locationProvider.html5Mode(true);
     $httpProvider.interceptors.push('authInterceptor');
   })
 
