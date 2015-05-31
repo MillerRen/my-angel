@@ -8,7 +8,7 @@ angular.module('myAngelApp', [
   'route-segment',
   'view-segment',
   'btford.socket-io',
-  'angularLoad'
+  'angular-async-loader'
 ])
   .config(function ($routeProvider, $routeSegmentProvider, $locationProvider, $httpProvider) {
     $routeProvider
@@ -17,7 +17,7 @@ angular.module('myAngelApp', [
       });
       
     $routeSegmentProvider.options.autoLoadTemplates = true;
-    //$locationProvider.html5Mode(true);
+    $locationProvider.html5Mode(true);
     $httpProvider.interceptors.push('authInterceptor');
   })
 
@@ -47,7 +47,11 @@ angular.module('myAngelApp', [
     };
   })
 
-  .run(function ($rootScope, $location, Auth) {
+  .config(function($ngLoadProvider){
+    
+  })
+
+  .run(function ($rootScope, $location,$ngLoad, Auth) {
     // Redirect to login if route requires auth and you're not logged in
     $rootScope.$on('$routeChangeStart', function (event, next) {
       Auth.isLoggedInAsync(function(loggedIn) {

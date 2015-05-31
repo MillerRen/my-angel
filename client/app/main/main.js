@@ -2,7 +2,7 @@
 
 angular.module('myAngelApp')
   .config(function ($routeSegmentProvider) {
-    
+
     $routeSegmentProvider
       .when('/', 'main')
       .segment('main', {

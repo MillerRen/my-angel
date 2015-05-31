@@ -21,8 +21,7 @@ module.exports = function(config) {
       'bower_components/angular-route/angular-route.js',
       'bower_components/angular-socket-io/socket.js',
       'bower_components/angular-route-segment/build/angular-route-segment.js',
-      'bower_components/angular-module-shim/angular-module-shim.js',
-      'bower_components/angular-load/angular-load.js',
+      'bower_components/angular-async-loader/dist/angular-async-loader.js',
       'bower_components/angular-mocks/angular-mocks.js',
       // endbower
       'client/app/app.js',
