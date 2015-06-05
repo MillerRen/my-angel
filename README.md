@@ -2,7 +2,15 @@
 
 -----------------------------------------
 
-*Full-stack* js development environment with **M**ongodb **Y**eoman **A**ngular **N**odejs **G**runt **E**xpress **L**ess
+> *Full-stack* js development environment with **M**ongodb **Y**eoman **A**ngular **N**odejs **G**runt **E**xpress **L**ess
+
+# Feature
+ 
+ * full-stack js development environment.
+ * code generator width yeoman and generator-my-angel
+ * test ready. Including client,server and e2e.
+ * angular module and resource async loading.
+ * Oauth with passport
 
 # Usage
 
