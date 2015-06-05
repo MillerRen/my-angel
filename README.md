@@ -11,6 +11,7 @@
  * test ready. Including client,server and e2e.
  * angular module and resource async loading.
  * Oauth with passport
+ * nested routing
 
 # Usage
 
