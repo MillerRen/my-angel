@@ -13,7 +13,7 @@ angular.module('myAngelApp')
         templateUrl: 'components/account/signup/signup.html',
         controller: 'SignupCtrl'
       })
-      .when('/settings', '')
+      .when('/settings', 'settings')
       .segment('settings', {
         templateUrl: 'components/account/settings/settings.html',
         controller: 'SettingsCtrl',
