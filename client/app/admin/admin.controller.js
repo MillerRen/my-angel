@@ -4,7 +4,9 @@ angular.module('myAngelApp')
   .controller('AdminCtrl', function ($scope, $http, Auth, User) {
 
     // Use the User $resource to fetch all users
-    $scope.users = User.query();
+    //$scope.users = User.query();
+
+    var ctrl = this;
 
     $scope.delete = function(user) {
       User.remove({ id: user._id });
@@ -14,4 +16,9 @@ angular.module('myAngelApp')
         }
       });
     };
+
+    $scope.index = function(tableState){
+      $scope.users = User.query(tableState);
+    }
+
   });
