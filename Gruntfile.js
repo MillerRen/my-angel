@@ -108,11 +108,11 @@ module.exports = function (grunt) {
       },
       livereload: {
         files: [
-          '{.tmp,<%= yeoman.client %>}/**/*.css',
-          '{.tmp,<%= yeoman.client %>}/**/*.html',
-          '{.tmp,<%= yeoman.client %>}/**/*.js',
-          '!{.tmp,<%= yeoman.client %>}/**/*.spec.js',
-          '!{.tmp,<%= yeoman.client %>}/**/*.mock.js',
+          '{.tmp,<%= yeoman.client %>}/{app,components}/**/*.css',
+          '{.tmp,<%= yeoman.client %>}/{app,components}/**/*.html',
+          '{.tmp,<%= yeoman.client %>}/{app,components}/**/*.js',
+          '!{.tmp,<%= yeoman.client %>}/{app,components}/**/*.spec.js',
+          '!{.tmp,<%= yeoman.client %>}/{app,components}/**/*.mock.js',
           '<%= yeoman.client %>/assets/images/{,*//*}*.{png,jpg,jpeg,gif,webp,svg}'
         ],
         options: {
@@ -153,14 +153,14 @@ module.exports = function (grunt) {
         src: ['server/**/*.spec.js']
       },
       all: [
-        '<%= yeoman.client %>/**/*.js',
-        '!<%= yeoman.client %>/**/*.spec.js',
-        '!<%= yeoman.client %>/**/*.mock.js'
+        '<%= yeoman.client %>/{app,components}/**/*.js',
+        '!<%= yeoman.client %>/{app,components}/**/*.spec.js',
+        '!<%= yeoman.client %>/{app,components}/**/*.mock.js'
       ],
       test: {
         src: [
-          '<%= yeoman.client %>/**/*.spec.js',
-          '<%= yeoman.client %>/**/*.mock.js'
+          '<%= yeoman.client %>/{app,components}/**/*.spec.js',
+          '<%= yeoman.client %>/{app,components}/**/*.mock.js'
         ]
       }
     },
@@ -191,7 +191,7 @@ module.exports = function (grunt) {
         files: [{
           expand: true,
           cwd: '.tmp/',
-          src: '**/*.css',
+          src: '{,*/}*.css',
           dest: '.tmp/'
         }]
       }
@@ -261,9 +261,9 @@ module.exports = function (grunt) {
       dist: {
         files: {
           src: [
-            '<%= yeoman.dist %>/client/**/*.js',
-            '<%= yeoman.dist %>/client/**/*.css',
-            '<%= yeoman.dist %>/client/assets/images/**/*.{png,jpg,jpeg,gif,webp,svg}',
+            '<%= yeoman.dist %>/client/{,*/}*.js',
+            '<%= yeoman.dist %>/client/{,*/}*.css',
+            '<%= yeoman.dist %>/client/assets/images/{,*/}*.{png,jpg,jpeg,gif,webp,svg}',
             '<%= yeoman.dist %>/client/assets/fonts/*'
           ]
         }
@@ -282,9 +282,9 @@ module.exports = function (grunt) {
 
     // Performs rewrites based on rev and the useminPrepare configuration
     usemin: {
-      html: ['<%= yeoman.dist %>/client/**/*.html'],
-      css: ['<%= yeoman.dist %>/client/**/*.css'],
-      js: ['<%= yeoman.dist %>/client/**/*.js'],
+      html: ['<%= yeoman.dist %>/client/{,*/}*.html'],
+      css: ['<%= yeoman.dist %>/client/{,*/}*.css'],
+      js: ['<%= yeoman.dist %>/client/{,*/}*.js'],
       options: {
         assetsDirs: [
           '<%= yeoman.dist %>/client',
@@ -305,7 +305,7 @@ module.exports = function (grunt) {
         files: [{
           expand: true,
           cwd: '<%= yeoman.client %>/assets/images',
-          src: '**/*.{png,jpg,jpeg,gif}',
+          src: '{,*/}*.{png,jpg,jpeg,gif}',
           dest: '<%= yeoman.dist %>/client/assets/images'
         }]
       }
@@ -316,7 +316,7 @@ module.exports = function (grunt) {
         files: [{
           expand: true,
           cwd: '<%= yeoman.client %>/assets/images',
-          src: '**/*.svg',
+          src: '{,*/}*.svg',
           dest: '<%= yeoman.dist %>/client/assets/images'
         }]
       }
@@ -353,12 +353,12 @@ module.exports = function (grunt) {
       },
       main: {
         cwd: '<%= yeoman.client %>',
-        src: ['**/*.html'],
+        src: ['{app,components}/**/*.html'],
         dest: '.tmp/templates.js'
       },
       tmp: {
         cwd: '.tmp',
-        src: ['**/*.html'],
+        src: ['{app,components}/**/*.html'],
         dest: '.tmp/tmp-templates.js'
       }
     },
@@ -382,7 +382,7 @@ module.exports = function (grunt) {
             '*.{ico,png,txt}',
             '.htaccess',
             './bower_components/**/*',
-            'assets/images/**/*.{webp}',
+            'assets/images/{,*/}*.{webp}',
             'assets/fonts/**/*',
             'index.html'
           ]
@@ -408,6 +408,27 @@ module.exports = function (grunt) {
       }
     },
 
+    buildcontrol: {
+      options: {
+        dir: 'dist',
+        commit: true,
+        push: true,
+        connectCommits: false,
+        message: 'Built %sourceName% from commit %sourceCommit% on branch %sourceBranch%'
+      },
+      heroku: {
+        options: {
+          remote: 'heroku',
+          branch: 'master'
+        }
+      },
+      openshift: {
+        options: {
+          remote: 'openshift',
+          branch: 'master'
+        }
+      }
+    },
 
     // Run some tasks in parallel to speed up the build process
     concurrent: {
@@ -527,10 +548,10 @@ module.exports = function (grunt) {
         },
         files: {
           '<%= yeoman.client %>/index.html': [
-              ['{.tmp,<%= yeoman.client %>}/**/*.js',
+              ['{.tmp,<%= yeoman.client %>}/{app,components}/**/*.js',
                '!{.tmp,<%= yeoman.client %>}/app/app.js',
-               '!{.tmp,<%= yeoman.client %>}/**/*.spec.js',
-               '!{.tmp,<%= yeoman.client %>}/**/*.mock.js']
+               '!{.tmp,<%= yeoman.client %>}/{app,components}/**/*.spec.js',
+               '!{.tmp,<%= yeoman.client %>}/{app,components}/**/*.mock.js']
             ]
         }
       },
@@ -548,7 +569,7 @@ module.exports = function (grunt) {
         },
         files: {
           '<%= yeoman.client %>/app/app.less': [
-            '<%= yeoman.client %>/**/*.less',
+            '<%= yeoman.client %>/{app,components}/**/*.less',
             '!<%= yeoman.client %>/app/app.less'
           ]
         }
@@ -567,7 +588,7 @@ module.exports = function (grunt) {
         },
         files: {
           '<%= yeoman.client %>/index.html': [
-            '<%= yeoman.client %>/**/*.css'
+            '<%= yeoman.client %>/{app,components}/**/*.css'
           ]
         }
       }
