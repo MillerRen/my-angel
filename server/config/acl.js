@@ -27,6 +27,9 @@ mongoose.connection.on('connected',function(err){
             allows: []
         }
     ]);
+
+    acl.addRoleParents( 'user', 'guest' );
+    acl.addRoleParents( 'admin', 'user' );
 })
 
 module.exports = function(app) {
