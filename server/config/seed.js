@@ -5,6 +5,8 @@
 
 'use strict';
 
+var mongoose = require('mongoose');
+var config = require('./environment');
 var Thing = require('../api/thing/thing.model');
 var User = require('../api/user/user.model');
 
@@ -37,6 +39,7 @@ User.find({}).remove(function() {
     email: 'test@test.com',
     password: 'test'
   }, {
+    _id: new mongoose.Types.ObjectId(config.adminId),
     provider: 'local',
     role: 'admin',
     name: 'Admin',

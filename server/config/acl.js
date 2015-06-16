@@ -5,6 +5,7 @@
 'use strict';
 
 var mongoose = require('mongoose');
+var config = require('./environment');
 var ACL = require('acl');
 var backend = new ACL.mongodbBackend(mongoose.connection.db, 'acl_');
 var acl = new ACL(backend);
@@ -30,6 +31,8 @@ mongoose.connection.on('connected',function(err){
 
     acl.addRoleParents( 'user', 'guest' );
     acl.addRoleParents( 'admin', 'user' );
+
+    acl.addUserRoles(new mongoose.Types.ObjectId(config.adminId).toString(), 'admin')
 })
 
 module.exports = function(app) {
