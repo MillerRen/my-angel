@@ -26,7 +26,7 @@ var socketio = require('socket.io')(server, {
 });
 require('./config/socketio')(socketio);
 require('./config/express')(app);
-require('./config/acl')(app);
+//require('./config/acl')(app);
 require('./routes')(app);
 
 // Start server
