@@ -8,7 +8,10 @@ var reload = browserSync.reload;
 gulp.task('serve', function() {
   browserSync({
     server: {
-      baseDir: 'client'
+      baseDir: ['client', '.tmp', 'node_modules'],
+      routes: {
+        '/bower_components': 'bower_components'
+      }
     }
   });
 
