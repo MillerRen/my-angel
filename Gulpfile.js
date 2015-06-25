@@ -22,6 +22,17 @@ gulp.task('inject:css', function () {
     .pipe(gulp.dest('client'));
 });
 
+gulp.task('inject:less', function () {
+  return gulp.src('client/app.less')
+    .pipe($.inject(gulp.src('client/components/**/*.less', {read:false}), {
+      starttag: '// injector',
+      endtag: '// endinjector',
+      ignorePath: ['client'],
+      addRootSlash: false
+    }))
+    .pipe(gulp.dest('client'));
+});
+
 gulp.task('inject:bower', function () {
   return gulp.src('client/index.html')
     .pipe($.inject($.bowerFiles(), {
