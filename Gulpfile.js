@@ -27,6 +27,7 @@ gulp.task('inject:bower', function () {
     .pipe($.inject($.bowerFiles(), {
         starttag: '<!-- bower:{{ext}} -->',
         endtag: '<!-- endbower -->',
+        addRootSlash: false
       }))
     .pipe(gulp.dest('client'));
 });
