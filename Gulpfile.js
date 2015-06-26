@@ -55,14 +55,23 @@ gulp.task('less', function () {
 gulp.task('serve', function() {
   browserSync({
     server: {
-      baseDir: ['client', '.tmp', 'node_modules'],
+      baseDir: ['client', '.tmp'],
       routes: {
         '/bower_components': 'bower_components'
       }
     }
   });
 
-  gulp.watch(['*.html', 'styles/**/*.css', 'scripts/**/*.js'], {cwd: 'app'}, reload);
+  gulp.watch(['client/**/*.html', '.tmp/**/*.css', 'client/**/*.js'], {cwd: 'app'}, reload);
+});
+
+
+gulp.task('build', ['less', 'usemin'], function () {
+  return gulp.src('./client/**/*.less')
+    .pipe($.less({
+      paths: [ 'client', 'bower_components' ]
+    }))
+    .pipe(gulp.dest('.tmp'));
 });
 
 
