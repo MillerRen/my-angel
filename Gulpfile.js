@@ -51,18 +51,14 @@ gulp.task('less', function () {
     .pipe(gulp.dest('.tmp'));
 });
 
-// watch files for changes and reload
-gulp.task('serve', function() {
-  browserSync({
-    server: {
-      baseDir: ['client', '.tmp'],
-      routes: {
-        '/bower_components': 'bower_components'
-      }
-    }
-  });
 
-  gulp.watch(['client/**/*.html', '.tmp/**/*.css', 'client/**/*.js'], {cwd: 'app'}, reload);
+gulp.task('server', function() {
+  $.developServer.listen({
+    path: 'server/app.js'
+  },
+  function( error ) {
+      if( ! error ) browserSync( {proxy: 'http://localhost:9000'} );
+  });
 });
 
 
