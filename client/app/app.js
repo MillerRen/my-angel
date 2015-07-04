@@ -27,9 +27,6 @@ angular.module('myAngelApp', [
       // Add authorization token to headers
       request: function (config) {
         config.headers = config.headers || {};
-        if ($cookieStore.get('token')) {
-          config.headers.Authorization = 'Bearer ' + $cookieStore.get('token');
-        }
         return config;
       },
 
@@ -37,8 +34,6 @@ angular.module('myAngelApp', [
       responseError: function(response) {
         if(response.status === 401) {
           $location.path('/login');
-          // remove any stale tokens
-          $cookieStore.remove('token');
           return $q.reject(response);
         }
         else {

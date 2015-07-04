@@ -20,4 +20,9 @@ router.post('/', function(req, res, next) {
   })(req, res, next)
 });
 
+router.delete('/', function(req, res, next){
+  req.logout();
+  res.json(401, {message: ''});
+});
+
 module.exports = router;
