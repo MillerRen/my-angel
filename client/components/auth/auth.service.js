@@ -111,6 +111,7 @@ angular.module('myAngelApp')
        * @return {Object} user
        */
       getCurrentUser: function() {
+        
         return currentUser;
       },
 
@@ -136,7 +137,11 @@ angular.module('myAngelApp')
         } else if(currentUser.hasOwnProperty('role')) {
           cb(true);
         } else {
-          cb(false);
+          currentUser = User.get(function(data){
+              cb(true);
+          },function(err){
+              cb(false);
+          });
         }
       },
 
@@ -147,13 +152,7 @@ angular.module('myAngelApp')
        */
       isAdmin: function() {
         return currentUser.role === 'admin';
-      },
-
-      /**
-       * Get auth token
-       */
-      getToken: function() {
-        return $cookieStore.get('token');
       }
+
     };
   });
