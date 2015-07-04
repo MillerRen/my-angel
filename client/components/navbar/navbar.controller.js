@@ -14,7 +14,6 @@ angular.module('myAngelApp')
 
     $scope.logout = function() {
       Auth.logout();
-      $location.path('/login');
     };
 
     $scope.isActive = function(route) {

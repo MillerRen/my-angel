@@ -25,7 +25,6 @@ angular.module('myAngelApp')
           password: user.password
         }).
         success(function(data) {
-          $cookieStore.put('token', data.token);
           currentUser = User.get();
           deferred.resolve(data);
           return cb();
@@ -44,9 +43,23 @@ angular.module('myAngelApp')
        *
        * @param  {Function}
        */
-      logout: function() {
-        $cookieStore.remove('token');
-        currentUser = {};
+      logout: function(callback) {
+        var cb = callback || angular.noop;
+        var deferred = $q.defer();
+
+        $http.delete('/auth/local').
+        success(function(data) {
+          currentUser = {};
+          $location.path('/login')
+          deferred.resolve(data);
+          return cb();
+        }).
+        error(function(err) {
+          deferred.reject(err);
+          return cb(err);
+        }.bind(this));
+
+        return deferred.promise;
       },
 
       /**
