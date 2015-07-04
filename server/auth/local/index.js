@@ -14,9 +14,7 @@ router.post('/', function(req, res, next) {
     
     req.logIn(user, function(err){
       if(err) return next(err);
-      req.session.userId = user._id;
-      var token = auth.signToken(user._id, user.role);
-      res.json({token: token});
+      res.json(user);
     });
     
   })(req, res, next)

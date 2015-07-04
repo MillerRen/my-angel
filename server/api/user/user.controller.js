@@ -3,7 +3,6 @@
 var User = require('./user.model');
 var passport = require('passport');
 var config = require('../../config/environment');
-var jwt = require('jsonwebtoken');
 
 var validationError = function(res, err) {
   return res.json(422, err);
@@ -29,8 +28,7 @@ exports.create = function (req, res, next) {
   newUser.role = 'user';
   newUser.save(function(err, user) {
     if (err) return validationError(res, err);
-    var token = jwt.sign({_id: user._id }, config.secrets.session, { expiresInMinutes: 60*5 });
-    res.json({ token: token });
+    res.json(user);
   });
 };
 

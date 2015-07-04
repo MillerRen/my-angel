@@ -11,9 +11,7 @@
     "ejs": "~0.8.4",
     "errorhandler": "^1.4.0",
     "express": "^4.12.4",
-    "express-jwt": "~3.0.1",
     "express-session": "~1.0.2",
-    "jsonwebtoken": "~5.0.1",
     "lodash": "~2.4.1",
     "method-override": "~1.0.0",
     "mongoose": "~3.8.8",
@@ -26,8 +24,7 @@
     "passport-twitter": "latest",
     "serve-favicon": "~2.0.1",
     "socket.io": "^1.0.6",
-    "socket.io-client": "^1.0.6",
-    "socketio-jwt": "~4.2.0"
+    "socket.io-client": "^1.0.6"
   },
   "devDependencies": {
     "browser-sync": "^2.7.12",
