@@ -14,7 +14,7 @@ router.post('/', function(req, res, next) {
     
     req.logIn(user, function(err){
       if(err) return next(err);
-      res.json(user);
+      res.json({});
     });
     
   })(req, res, next)
@@ -22,7 +22,7 @@ router.post('/', function(req, res, next) {
 
 router.delete('/', function(req, res, next){
   req.logout();
-  res.json(401, {message: ''});
+  res.json({});
 });
 
 module.exports = router;
