@@ -62,11 +62,12 @@ gulp.task('server', function() {
 });
 
 
-gulp.task('build', ['less', 'usemin'], function () {
+gulp.task('build', ['less'], function () {
   return gulp.src('./client/**/*.less')
     .pipe($.less({
       paths: [ 'client', 'bower_components' ]
     }))
+    .pipe($.concat('app.css'))
     .pipe(gulp.dest('.tmp'));
 });
 
