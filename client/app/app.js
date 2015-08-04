@@ -7,7 +7,7 @@ angular.module('myAngelApp', [
   'ngRoute',
   'route-segment',
   'view-segment',
-  'smart-table',
+  'ngTable',
   'btford.socket-io',
   'angular-async-loader'
 ])

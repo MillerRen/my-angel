@@ -1,16 +1,10 @@
 <div ng-include="'components/navbar/navbar.html'"></div>
 
 <div class="container">
-  <table st-table="mc.users" st-pipe="index" class="table table-bordered">
-    <thead>
-      <tr>
-        <th st-sort="email">Email</th>
-        <th>Action</th>
-      </tr>
-    </thead>
+  <table ng-table="tableParams"  class="table table-bordered">
     <tbody>
-      <tr ng-repeat="user in users">
-        <td>{{user.email}}</td>
+      <tr ng-repeat="user in $data">
+        <td data-title="'Email'" sortable="'email'">{{user.email}}</td>
         <td><a ng-click="delete(user)" class="trash"><span class="glyphicon glyphicon-trash"></span></a></td>
       </tr>
     </tbody>

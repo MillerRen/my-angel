@@ -1,10 +1,19 @@
 'use strict';
 
 angular.module('myAngelApp')
-  .controller('AdminCtrl', function ($scope, $http, Auth, User) {
+  .controller('AdminCtrl', function ($scope, $http, NgTableParams, Auth, User) {
 
-    // Use the User $resource to fetch all users
-    //$scope.users = User.query();
+    $scope.tableParams = new NgTableParams({
+      page:1,
+      count:100
+    },
+    {
+      getData: function($defer, params){
+        User.query(params.url(), function(data){
+          $defer.resolve(data);
+        });
+      }
+    });
 
     var ctrl = this;
 
@@ -16,9 +25,5 @@ angular.module('myAngelApp')
         }
       });
     };
-
-    $scope.index = function(tableState){
-      $scope.users = User.query(tableState);
-    }
 
   });

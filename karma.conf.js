@@ -25,6 +25,7 @@ module.exports = function(config) {
       'bower_components/angular-smart-table/dist/smart-table.js',
       'bower_components/angular-async-loader/dist/angular-async-loader.js',
       'bower_components/angular-load/angular-load.js',
+      'bower_components/ng-table/dist/ng-table.min.js',
       'bower_components/angular-mocks/angular-mocks.js',
       // endbower
       'client/app/app.js',
