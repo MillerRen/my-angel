@@ -22,7 +22,6 @@ module.exports = function(config) {
       'bower_components/angular-socket-io/socket.js',
       'bower_components/angular-loading-bar/build/loading-bar.js',
       'bower_components/angular-route-segment/build/angular-route-segment.js',
-      'bower_components/angular-smart-table/dist/smart-table.js',
       'bower_components/angular-async-loader/dist/angular-async-loader.js',
       'bower_components/angular-load/angular-load.js',
       'bower_components/ng-table/dist/ng-table.min.js',
